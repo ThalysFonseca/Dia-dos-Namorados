@@ -1,0 +1,314 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0d0d0d;
+    color:#fff;
+    font-family:Segoe UI, sans-serif;
+    overflow-x:hidden;
+}
+
+/* Fundo animado */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,77,109,.15), transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(255,133,161,.15), transparent 25%);
+    z-index:-1;
+}
+
+/* Tela inicial */
+
+#welcome{
+    position:fixed;
+    inset:0;
+    background:#0d0d0d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.welcome-box{
+    text-align:center;
+    padding:30px;
+}
+
+.welcome-box h1{
+    margin-bottom:20px;
+}
+
+.btn-romantico{
+    margin-top:20px;
+    padding:20px 35px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(
+        135deg,
+        #ff4d6d,
+        #ff758f
+    );
+    color:white;
+    font-size:1.1rem;
+    font-weight:600;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    box-shadow:
+        0 0 15px rgba(255,77,109,.4),
+        0 0 30px rgba(255,77,109,.2);
+
+    transition:all .3s ease;
+}
+
+.btn-romantico:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.05);
+
+    box-shadow:
+        0 0 20px rgba(255,77,109,.7),
+        0 0 40px rgba(255,77,109,.4);
+
+}
+
+.btn-romantico:active{
+    transform:scale(.97);
+}
+
+.btn-romantico span{
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.3);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+@media(max-width:768px){
+
+    .btn-romantico{
+        width:100%;
+        max-width:320px;
+        justify-content:center;
+    }
+
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:clamp(2rem,6vw,4.5rem);
+    color:#ff4d6d;
+}
+
+.hero p{
+    margin-top:20px;
+    max-width:700px;
+    color:#ddd;
+    font-size:clamp(1rem,2vw,1.3rem);
+}
+
+#contador{
+    margin-top:30px;
+    font-size:clamp(1.2rem,3vw,1.8rem);
+    color:#ff85a1;
+}
+
+/* Seções */
+
+section{
+    width:min(100%,1100px);
+    margin:auto;
+    padding:80px 20px;
+}
+
+.titulo{
+    text-align:center;
+    margin-bottom:50px;
+    color:#ff4d6d;
+}
+
+/* Timeline */
+
+.timeline{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.evento {
+    cursor: pointer;
+    position: relative;
+}
+
+.seta {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #ff4d6d;
+    transition: transform .4s ease;
+}
+
+.evento.aberto .seta {
+    transform: rotate(180deg);
+}
+
+.evento-detalhe {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .5s ease, padding .5s ease;
+    padding: 0 5px;
+}
+
+.evento.aberto .evento-detalhe {
+    max-height: 1000px;
+    padding: 10px 5px 5px;
+}
+
+/* Slideshow */
+
+.slideshow img{
+    width:100%;
+    height: 800px;
+    object-fit:cover;
+    border-radius:20px;
+    transition:opacity .8s ease;
+}
+
+.slideshow img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(255,77,109,.3);
+}
+
+@media (max-width: 768px) {
+
+    .slideshow img {
+        height: 600px; /* altura no celular */
+    }
+
+}
+
+/* Botões */
+
+.botao{
+    display:block;
+    margin:auto;
+    padding:15px 30px;
+    border:none;
+    border-radius:50px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.botao:hover{
+    transform:scale(1.05);
+}
+
+/* Carta */
+
+.carta{
+    max-height:0;
+    overflow:hidden;
+    transition:1s;
+}
+
+.carta.aberta{
+    max-height:2000px;
+    margin-top:30px;
+}
+
+.carta-conteudo{
+    background:#181818;
+    padding:30px;
+    border-radius:20px;
+    line-height:1.8;
+}
+
+/* Rodapé */
+
+footer{
+    text-align:center;
+    padding:60px 20px;
+    color:#aaa;
+}
+
+/* Corações */
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    pointer-events:none;
+    animation:subir linear forwards;
+}
+
+@keyframes subir{
+
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+
+}
+
+/* Celulares */
+
+@media (max-width:768px){
+
+    section{
+        padding:60px 15px;
+    }
+
+    .evento{
+        padding:15px;
+    }
+
+    .carta-conteudo{
+        padding:20px;
+    }
+
+}
