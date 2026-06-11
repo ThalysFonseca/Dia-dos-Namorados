@@ -119,6 +119,53 @@ body::before{
 
 }
 
+#player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+    background: rgba(0, 0, 0, .9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-bottom: 1px solid rgba(30, 215, 96, .3);
+}
+
+#player-capa {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    outline: 2px solid #1ed760;
+    outline-offset: 2px;
+    box-shadow:
+        0 0 8px rgba(30, 215, 96, .5),
+        0 0 20px rgba(30, 215, 96, .2);
+}
+
+#player-nome-wrapper {
+    overflow: hidden;
+    flex: 1;
+    white-space: nowrap;
+}
+
+#player-nome {
+    display: inline-block;
+    color: #1ed760;
+    font-size: .95rem;
+    font-weight: 500;
+    animation: scroll-nome 12s linear infinite;
+}
+
+@keyframes scroll-nome {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
 /* Hero */
 
 .hero{
